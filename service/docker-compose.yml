@@ -51,9 +51,9 @@ services:
     volumes:
       - speedtest:/config'
     environment:
-      - TZ=
-      - PGID=
-      - PUID=
+      - TZ=Europe/Madrid
+      - PGID=1000
+      - PUID=1000
       - OOKLA_EULA_GDPR=true
     logging:
       driver: "json-file"

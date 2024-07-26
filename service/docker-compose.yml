@@ -49,7 +49,7 @@ services:
     ports:
       - 8765:80
     volumes:
-      - speedtest:/config'
+      - speedtest:/config
     environment:
       - TZ=Europe/Madrid
       - PGID=1000

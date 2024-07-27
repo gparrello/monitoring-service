@@ -78,7 +78,7 @@ services:
       - uptime-kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
-      - 127.0.0.1:19301:3001
+      - 19301:3001
     restart: always
     dns:
       - 10.80.0.2

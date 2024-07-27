@@ -72,6 +72,8 @@ services:
   uptime-kuma:
     image: louislam/uptime-kuma
     container_name: uptime-kuma
+    environment:
+      - TZ=Europe/Madrid
     volumes:
       - uptime-kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -80,6 +82,25 @@ services:
     restart: always
     dns:
       - 10.80.0.2
+
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    environment:
+      - TZ=Europe/Madrid
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 9999:8080
+    dns:
+      - 10.80.0.2
+    restart: unless-stopped
+    # healthcheck:
+    #   test: curl -sS http://127.0.0.1:8080 || exit 1
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    
 
 volumes:
   netdataconfig:

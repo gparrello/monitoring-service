@@ -8,7 +8,6 @@ services:
       - ./config/glances.conf:/etc/glances/glances.conf:ro
     environment:
       - TZ=Europe/Madrid
-      - GLANCES_OPT="-w"
     network_mode: host
     pid: host
     restart: unless-stopped

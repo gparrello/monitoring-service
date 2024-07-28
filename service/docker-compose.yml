@@ -1,29 +1,16 @@
 services:
 
-  netdata:
-    image: netdata/netdata
-    container_name: netdata
-    pid: host
-    network_mode: host
-    restart: unless-stopped
-    cap_add:
-      - SYS_PTRACE
-      - SYS_ADMIN
-    security_opt:
-      - apparmor:unconfined
+  glances:
+    image: nicolargo/glances:latest-full
     volumes:
-      - netdataconfig:/etc/netdata
-      - netdatalib:/var/lib/netdata
-      - netdatacache:/var/cache/netdata
-      - /:/host/root:ro,rslave
-      - /etc/passwd:/host/etc/passwd:ro
-      - /etc/group:/host/etc/group:ro
-      - /etc/localtime:/etc/localtime:ro
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /etc/os-release:/host/etc/os-release:ro
-      - /var/log:/host/var/log:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/var/run/d-ocker.sock:ro
+      - ./config/glances.conf:/etc/glances/glances.conf
+    environment:
+      - TZ=Europe/Madrid
+      - GLANCES_OPT="-w"
+    network_mode: host
+    pid: host
+    restart: unless-stopped
 
   monocker:
     container_name: monocker
@@ -103,8 +90,5 @@ services:
     
 
 volumes:
-  netdataconfig:
-  netdatalib:
-  netdatacache:
   speedtest:
   uptime-kuma:

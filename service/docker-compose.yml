@@ -5,9 +5,10 @@ services:
     container_name: glances
     volumes:
       - /var/run/docker.sock:/var/run/d-ocker.sock:ro
-      - ./config/glances.conf:/etc/glances/glances.conf:ro
+      # - ./config/glances.conf:/etc/glances/glances.conf:ro
     environment:
       - TZ=Europe/Madrid
+      - GLANCES_OPT="-w"
     network_mode: host
     pid: host
     restart: unless-stopped

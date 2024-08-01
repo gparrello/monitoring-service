@@ -98,7 +98,7 @@ services:
     container_name: wyl
     network_mode: host
     volumes:
-      - watchyourlan:/data'
+      - watchyourlan:/data
     environment:
       - TZ=Europe/Madrid
       - IFACE=enp0s25

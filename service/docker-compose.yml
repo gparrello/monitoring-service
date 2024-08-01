@@ -103,7 +103,8 @@ services:
       - TZ=Europe/Madrid
       - IFACE=enp0s25
       - THEME=darkly
-      # - SHOUTRRR_URL
+      - HISTORY_DAYS=90
+      - SHOUTRRR_URL
 
 volumes:
   speedtest:

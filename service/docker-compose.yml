@@ -18,24 +18,21 @@ services:
       timeout: 10s
       retries: 3
 
-  monocker:
-    container_name: monocker
-    image: petersem/monocker
-    environment:
-      - SERVER_LABEL='titania'
-      - SERVER_AVATAR='https://content.invisioncic.com/u329766/monthly_2024_05/monocker.png.ba5ffdb390b627097d2a53645cf87350.png'
-      - ONLY_OFFLINE_STATES='false'
-      - EXCLUDE_EXITED='false'      
-      - PERIOD=30
-      - DISABLE_STARTUP_MSG='false'
-      - SHA='false'
-      - MESSAGE_PLATFORM
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+  notifier:
     restart: unless-stopped
+    image: lorcas/docker-telegram-notifier:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro # for local instance
+      # - ./certs:/certs # for remote instance
+    environment:
+      - TELEGRAM_NOTIFIER_BOT_TOKEN
+      - TELEGRAM_NOTIFIER_CHAT_ID
+      # ONLY_WHITELIST: true
+      # DOCKER_HOST: tcp://example.com:2376 # http/https is detected by port number
+      # DOCKER_CERT_PATH: /certs # should contain ca.pem, cert.pem, key.pem
     dns:
       - 10.80.0.2
-
+    
   speedtest:
     container_name: speedtest
     image: henrywhitaker3/speedtest-tracker

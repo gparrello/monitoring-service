@@ -108,7 +108,7 @@ services:
       - SHOUTRRR_URL
       - AUTH=true
       - AUTH_USER=admin
-      - AUTH_PASSWORD="$2y$10$SHlpxJLNFTvP3nPZ1rsHweTnsLtqkP4s0D1KK5qrSUvmCmGy/vc6q"
+      - 'AUTH_PASSWORD=$2y$10$SHlpxJLNFTvP3nPZ1rsHweTnsLtqkP4s0D1KK5qrSUvmCmGy/vc6q'
 
 volumes:
   speedtest:

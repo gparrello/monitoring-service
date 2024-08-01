@@ -91,8 +91,22 @@ services:
     #   interval: 30s
     #   timeout: 10s
     #   retries: 3
-    
+  
+  # https://github.com/aceberg/WatchYourLAN#quick-start
+  watchyourlan:
+    image: aceberg/watchyourlan
+    container_name: wyl
+    network_mode: host
+    volumes:
+      - watchyourlan:/data'
+    environment:
+      - TZ=Europe/Madrid
+      - IFACE=enp0s25
+      - THEME=darkly
+      # - SHOUTRRR_URL
 
 volumes:
   speedtest:
   uptime-kuma:
+  watchyourlan:
+

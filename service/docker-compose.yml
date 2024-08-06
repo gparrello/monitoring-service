@@ -73,6 +73,12 @@ services:
     restart: always
     dns:
       - 10.80.0.2
+    healthcheck:
+      test: curl -sS http://127.0.0.1:3001 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  
 
   dozzle:
     container_name: dozzle
@@ -86,11 +92,11 @@ services:
     dns:
       - 10.80.0.2
     restart: unless-stopped
-    # healthcheck:
-    #   test: curl -sS http://127.0.0.1:8080 || exit 1
-    #   interval: 30s
-    #   timeout: 10s
-    #   retries: 3
+    healthcheck:
+      test: curl -sS http://127.0.0.1:8080 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
   
   # https://github.com/aceberg/WatchYourLAN#quick-start
   watchyourlan:
@@ -106,6 +112,11 @@ services:
       - HISTORY_DAYS=90
       - IGNOREIP=yes
       - SHOUTRRR_URL
+    healthcheck:
+      test: curl -sS http://127.0.0.1:8840 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 volumes:
   speedtest:

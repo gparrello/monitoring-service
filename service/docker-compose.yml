@@ -100,6 +100,7 @@ services:
   
   # https://github.com/aceberg/WatchYourLAN#quick-start
   watchyourlan:
+    restart: unless-stopped
     image: aceberg/watchyourlan
     container_name: wyl
     network_mode: host

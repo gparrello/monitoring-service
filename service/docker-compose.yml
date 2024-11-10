@@ -108,7 +108,7 @@ services:
       - watchyourlan:/data
     environment:
       - TZ=Europe/Madrid
-      - IFACE=enp0s25
+      - IFACES=enp0s25
       - THEME=darkly
       - HISTORY_DAYS=90
       - IGNOREIP=yes

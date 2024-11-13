@@ -43,8 +43,6 @@ services:
   speedtest:
     container_name: speedtest
     image: henrywhitaker3/speedtest-tracker
-    ports:
-      - 8765:80
     networks:
       - internal-proxy
     volumes:
@@ -80,8 +78,6 @@ services:
     volumes:
       - uptime-kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    ports:
-      - 19301:3001
     networks:
       - internal-proxy
     restart: always
@@ -103,8 +99,6 @@ services:
       - TZ=Europe/Madrid
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    ports:
-      - 9999:8080
     networks:
       - internal-proxy
     dns:

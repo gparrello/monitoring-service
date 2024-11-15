@@ -23,7 +23,7 @@ services:
     pid: host
     restart: unless-stopped
     healthcheck:
-      test: curl -sS http://127.0.0.1:61208 || exit 1
+      test: curl -sS --fail-with-body http://$$VIRTUAL_HOST || exit 1
       interval: 30s
       timeout: 10s
       retries: 3
@@ -67,7 +67,7 @@ services:
     dns:
       - 10.80.0.2
     healthcheck:
-      test: curl -sS http://127.0.0.1:80 || exit 1
+      test: curl -sS --fail-with-body http://$$VIRTUAL_HOST || exit 1
       interval: 30s
       timeout: 10s
       retries: 3
@@ -88,7 +88,7 @@ services:
     dns:
       - 10.80.0.2
     healthcheck:
-      test: curl -sS http://127.0.0.1:3001 || exit 1
+      test: curl -sS --fail-with-body http://$$VIRTUAL_HOST || exit 1
       interval: 30s
       timeout: 10s
       retries: 3
@@ -109,7 +109,7 @@ services:
       - 10.80.0.2
     restart: unless-stopped
     # healthcheck:  # no shell
-    #   test: curl -sS http://127.0.0.1:8080 || exit 1
+    #   test: curl -sS --fail-with-body http://$$VIRTUAL_HOST || exit 1
     #   interval: 30s
     #   timeout: 10s
     #   retries: 3
@@ -132,7 +132,7 @@ services:
       - IGNOREIP=yes
       - SHOUTRRR_URL
     # healthcheck:  # curl not available
-    #   test: curl -sS http://127.0.0.1:8840 || exit 1
+    #   test: curl -sS --fail-with-body http://$$VIRTUAL_HOST || exit 1
     #   interval: 30s
     #   timeout: 10s
     #   retries: 3

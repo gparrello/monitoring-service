@@ -12,8 +12,10 @@ services:
     image: nicolargo/glances:latest-full
     container_name: glances
     volumes:
-      - /var/run/docker.sock:/var/run/d-ocker.sock:ro
       - ./config/glances.conf:/etc/glances/glances.conf:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/lib/docker/volumes:/filesystems/volumes:ro
+      - /data:/filesystems/data:ro
     environment:
       VIRTUAL_HOST: mon.home.lan
       VIRTUAL_PORT: 61208

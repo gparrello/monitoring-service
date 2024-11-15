@@ -21,6 +21,7 @@ services:
       - GLANCES_OPT=-w
     network_mode: host
     pid: host
+    privileged: true
     restart: unless-stopped
     healthcheck:
       test: curl -sS --fail-with-body http://$$VIRTUAL_HOST || exit 1

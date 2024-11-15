@@ -18,7 +18,7 @@ services:
       VIRTUAL_HOST: mon.home.lan
       VIRTUAL_PORT: 61208
       TZ: Europe/Madrid
-      GLANCES_OPT: "-C /etc/glances/glances.conf -w -d"
+      GLANCES_OPT: "-C /etc/glances/glances.conf -w"
     network_mode: host
     pid: host
     privileged: true

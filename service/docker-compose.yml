@@ -15,10 +15,10 @@ services:
       - /var/run/docker.sock:/var/run/d-ocker.sock:ro
       - ./config/glances.conf:/etc/glances/glances.conf:ro
     environment:
-      - VIRTUAL_HOST=mon.home.lan
-      - VIRTUAL_PORT=61208
-      - TZ=Europe/Madrid
-      - GLANCES_OPT=-w
+      VIRTUAL_HOST: mon.home.lan
+      VIRTUAL_PORT: 61208
+      TZ: Europe/Madrid
+      GLANCES_OPT: "-C /etc/glances/glances.conf -w"
     network_mode: host
     pid: host
     privileged: true
